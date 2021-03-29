@@ -4,6 +4,12 @@ Nuestro proyecto estará ubicado dentro de la carpeta /app.
 
 He dejado un pequeño ejemplo "index.php" de configuración dentro de la carpeta para comprobar que conecta correctamente con la base de datos.
 
+## Clonar el repositorio
+
+```
+git clone https://github.com/janfribogar/mupwar-php-entorno-pruebas.git
+```
+
 ## Levantamos nuestro entorno docker
 
 *** Entrar dentro del directorio donde se ubica el archivo docker-compose.yml para poder ejecutar el siguiente comando desde terminal.
@@ -23,10 +29,10 @@ docker-compose up -d --build
 
 - Entramos dentro de nuestro contenedor de php previemante creado:
 
-*** cambiar el nombre del contenedor al nombre del contenedor creado en vuestra máquina (seguramente sea nombreDeCarpetaDeProyecto_php_1)
+*** cambiar el nombre del contenedor al nombre del contenedor creado en vuestra máquina (seguramente sea nombreDeCarpetaDeProyecto_php_1 --> mupwar-php-entorno-pruebas_php_1)
 
 ```
-docker exec -it 00_entornopruebasphpmysqlcomposer_php_1 bash
+docker exec -it mupwar-php-entorno-pruebas_php_1 bash
 ```
 
 - Nos aseguramos que composer está correctamente instalado:
