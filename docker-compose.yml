@@ -6,11 +6,11 @@ services:
       - MYSQL_DATABASE=app_db
       - MYSQL_USER=user
       - MYSQL_PASSWORD=user_pass
-    volumes: ['./app_db:/var/lib/mysql']
+    volumes: ['./docker/mysql/my.cnf:/etc/my.cnf']
   adminer:
     image: adminer:4.8.0-standalone
     ports: ['8091:8080']
   php:
     build: ./docker/php
     ports: ['8090:80']
-    volumes: ['./app/:/var/www/html:cached']
+    volumes: ['./app/:/var/www/html']
