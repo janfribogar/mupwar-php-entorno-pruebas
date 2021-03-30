@@ -59,7 +59,7 @@ Si creais de nuevo el contenedor podeis volver a cargar el backup de la base de 
 
 *** Cuidado si habeis cambiado el nombre de la base da datos "app_db" o la password del usuario root "root_pass" en el docker-compose.
 
-- Backup:
+- Backup base de datos:
 
 ```
 docker exec mupwar-php-entorno-pruebas_db_1 /usr/bin/mysqldump -u root --password=root_pass app_db > ./dbBackup/backup.sql
