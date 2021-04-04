@@ -6,7 +6,7 @@ services:
       - MYSQL_DATABASE=app_db
       - MYSQL_USER=user
       - MYSQL_PASSWORD=user_pass
-    volumes: ['./docker/mysql/my.cnf:/etc/my.cnf']
+    volumes: ['./docker/mysql/my.cnf:/etc/my.cnf', './dbBackup:/docker-entrypoint-initdb.d']
   adminer:
     image: adminer:4.8.0-standalone
     ports: ['8091:8080']
@@ -14,3 +14,8 @@ services:
     build: ./docker/php
     ports: ['8090:80']
     volumes: ['./app/:/var/www/html']
+  composer:
+    image: composer:2.0.11
+    volumes: ['./app/:/app']
+    command: composer install
+    user: ${CURRENT_UID}

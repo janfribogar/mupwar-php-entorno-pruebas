@@ -1,15 +1,21 @@
 <?php
 
-$dbServer = 'db';
-$dbName = 'app_db';
-$dbUser = 'user';
-$dbUserPass = 'user_pass';
+define('DB_HOST','db');
+define('DB_NAME','app_db');
+define('DB_USER','user');
+define('DB_PASS','user_pass');
 
-try {
-  $conn = new PDO("mysql:host=$dbServer;dbname=$dbName", $dbUser, $dbUserPass);
-  $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-  $conn->setAttribute( PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC ); 
+define('OPTIONS', array(
+  PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+  PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+));
+
+try
+{
+  $connection = new PDO( "mysql:host=".DB_HOST.";dbname=".DB_NAME, DB_USER, DB_PASS, OPTIONS );
   echo "Connected successfully";
-} catch(PDOException $e) {
+}
+catch ( PDOException $e )
+{
   echo "Connection failed: " . $e->getMessage();
 }

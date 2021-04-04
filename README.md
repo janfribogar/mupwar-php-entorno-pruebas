@@ -2,7 +2,14 @@
 
 Nuestro proyecto estará ubicado dentro de la carpeta /app.
 
+Nuestro backup de la base de datos estará ubicado dentro de la carpeta /dbBackup.
+
 He dejado un pequeño ejemplo "index.php" de configuración dentro de la carpeta para comprobar que conecta correctamente con la base de datos.
+
+El docker-compose tiene el contenedor composer para ejecutar directamente el comando "composer install" sobre la carpeta del proyecto.
+Si tenemos el archivo composer.json nos cargará todas las dependencias necesarias (carpeta vendor, var, etc...).
+
+El contenedor de mysql cargará todas las bases de datos que tengamos en la carpeta dbBackup al iniciarse (archivos ".sql").
 
 ## 1. Clonar el repositorio
 
@@ -15,7 +22,7 @@ git clone https://github.com/janfribogar/mupwar-php-entorno-pruebas.git
 *** Entrar dentro del directorio donde se ubica el archivo docker-compose.yml para poder ejecutar el siguiente comando desde terminal.
 
 ```
-docker-compose up -d --build
+CURRENT_UID=$(id -u):$(id -g) docker-compose up -d --build
 ```
 
 ## 3. Acceder al navegador para ver nuestra app y gestor de bases de datos adminer:
@@ -49,7 +56,7 @@ composer require "twig/twig"
 
 ![composer](./doc/img/composer.png)
 
-## 5. Bakcup & restore de la base de datos
+## OPCIONAL: Bakcup & restore de la base de datos
 
 Si creais tablas y/o añadis datos en la base de datos, realizar un backup de ella ya que si eliminais el contenedor se borrara toda la estructura de la base de datos (tanto tablas como datos).
 
